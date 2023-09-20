@@ -10,10 +10,9 @@ import SwiftUI
 // MARK: - Main Nav View
 struct AlbumInfoListView: View {
     @ObservedObject var viewModel = AlbumInfoViewModel()
-
+    
     var body: some View {
         NavigationStack {
-            
             List(viewModel.albumInfos) { albumInfo in
                 NavigationLink(destination: AlbumInfoDetailView(albumInfo: albumInfo)) {
                     VStack(alignment: .leading) {
@@ -39,8 +38,8 @@ struct AlbumInfoListView: View {
                     }
                 }
             }
-//          .scrollContentBackground(.hidden) // Hides the content background
-//          .background(Color.blue) // Sets the color that whill show when content background is hidden
+            //          .scrollContentBackground(.hidden) // Hides the content background
+            //          .background(Color.blue) // Sets the color that whill show when content background is hidden
             .navigationTitle("Albums")
             .toolbarBackground(
                 Color.blue,
@@ -49,8 +48,8 @@ struct AlbumInfoListView: View {
             .navigationBarTitleDisplayMode(.large) // When set to .inline it the space after the NavigationBar and before the list
             .onAppear(perform: viewModel.fetchAlbumInfos)
         }
+        
     }
-
 }
 
 // MARK: Previews
