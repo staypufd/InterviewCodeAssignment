@@ -39,7 +39,7 @@ struct AlbumInfoListView: View {
                 }
             }
             //          .scrollContentBackground(.hidden) // Hides the content background
-            //          .background(Color.blue) // Sets the color that whill show when content background is hidden
+            //          .background(Color.blue) // Sets the color that will show when content background is hidden
             .navigationTitle("Albums")
             .toolbarBackground(
                 Color.blue,
