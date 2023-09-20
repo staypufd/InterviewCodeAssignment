@@ -9,6 +9,7 @@ import Foundation
 
 class AlbumInfoViewModel: ObservableObject {
     @Published var albumInfos: [AlbumInfo] = []
+    @Published var isLoaded = false
     
     func fetchAlbumInfos() {
         guard let url = URL(string: "https://jsonplaceholder.typicode.com/albums/1/photos") else { return }

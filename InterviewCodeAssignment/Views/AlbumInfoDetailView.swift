@@ -24,7 +24,6 @@ struct AlbumInfoDetailView: View {
                 .navigationBarTitle(Text(albumInfo.title), displayMode: .inline)
                 Spacer()
             }
-            
         }
     }
 }
