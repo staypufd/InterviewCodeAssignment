@@ -33,13 +33,13 @@ struct AlbumInfoListView: View {
                                            alignment: .leading)
                                     .fontWeight(.thin)
                             }
-                            .padding(0)
+                            .padding(0) 
                         }
                     }
                 }
             }
             //          .scrollContentBackground(.hidden) // Hides the content background
-            //          .background(Color.blue) // Sets the color that will show when content background is hidden
+            //          .background(Color.blue) // Sets the color that w.ill show when content background is hidden
             .navigationTitle("Albums")
             .toolbarBackground(
                 Color.blue,
