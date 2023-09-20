@@ -17,8 +17,16 @@ struct AlbumInfoDetailView: View {
                     Text(albumInfo.title).font(.largeTitle).padding().lineLimit(4)
                     Text(String(albumInfo.id)).padding()
                     Text(String(albumInfo.albumId)).padding()
-                    AsyncImage(url: URL(string: albumInfo.thumbnailUrl))
-                    AsyncImage(url: URL(string: albumInfo.url))
+                    AsyncImage(url: URL(string: albumInfo.thumbnailUrl)) { image in
+                        image
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    AsyncImage(url: URL(string: albumInfo.url)) { image in
+                        image
+                    } placeholder: {
+                        ProgressView()
+                    }
                 }
                 .navigationBarTitle(Text(albumInfo.title), displayMode: .inline)
                 Spacer()
