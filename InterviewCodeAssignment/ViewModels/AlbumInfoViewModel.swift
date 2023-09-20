@@ -28,7 +28,7 @@ class AlbumInfoViewModel: ObservableObject {
             if let data = jsonData {
                 if let decodedAlbumInfos = try? JSONDecoder().decode([AlbumInfo].self, from: data) {
                     DispatchQueue.main.async {
-                        sleep(2)
+//                        sleep(2)
 
                         self.albumInfos = decodedAlbumInfos
                         self.isLoading = false

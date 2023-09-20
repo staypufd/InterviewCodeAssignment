@@ -11,28 +11,33 @@ struct AlbumInfoDetailView: View {
     var albumInfo: AlbumInfo
 
     var body: some View {
-        ScrollView(.vertical) {
-            ScrollView(.horizontal) {
-                VStack(alignment:.leading) {
-                    Text(albumInfo.title).font(.largeTitle).padding().lineLimit(4)
-                    Text(String(albumInfo.id)).padding()
-                    Text(String(albumInfo.albumId)).padding()
-                    AsyncImage(url: URL(string: albumInfo.thumbnailUrl)) { image in
-                        image
-                    } placeholder: {
-                        ProgressView()
+        Form {
+            Text(albumInfo.title).font(.largeTitle).padding().lineLimit(4)
+            Text(String(albumInfo.id)).padding()
+            Text(String(albumInfo.albumId)).padding()
+        
+            ScrollView(.vertical) {
+                ScrollView(.horizontal) {
+                    VStack(alignment:.leading) {
+
+                        AsyncImage(url: URL(string: albumInfo.thumbnailUrl)) { image in
+                            image
+                        } placeholder: {
+                            ProgressView()
+                        }
+                        Spacer()
+                        AsyncImage(url: URL(string: albumInfo.url)) { image in
+                            image
+                        } placeholder: {
+                            ProgressView()
+                        }
                     }
-                    AsyncImage(url: URL(string: albumInfo.url)) { image in
-                        image
-                    } placeholder: {
-                        ProgressView()
-                    }
+                    .navigationBarTitle(Text(albumInfo.title), displayMode: .inline)
+                    Spacer()
                 }
-                .navigationBarTitle(Text(albumInfo.title), displayMode: .inline)
-                Spacer()
             }
-        }
-        .foregroundColor(Color.blue)
+            .foregroundColor(Color.blue)
+        }.padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
     }
 }
 
