@@ -13,6 +13,20 @@ struct AlbumInfoListView: View {
     
     var body: some View {
         NavigationStack {
+            if viewModel.isLoading == true {
+                VStack {
+                    Spacer()
+                    
+                    if #available(iOS 17.0, *) {
+                        ProgressView().controlSize(.extraLarge)
+                    } else {
+                        ProgressView().controlSize(.large)
+                    }
+                }
+            }
+            // Gives us a little space between navbar head and List table
+            EmptyView()
+        
             List(viewModel.albumInfos) { albumInfo in
                 NavigationLink(destination: AlbumInfoDetailView(albumInfo: albumInfo)) {
                     VStack(alignment: .leading) {

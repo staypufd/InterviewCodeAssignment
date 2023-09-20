@@ -18,13 +18,13 @@ struct AlbumInfoDetailView: View {
                     Text(String(albumInfo.id)).padding()
                     Text(String(albumInfo.albumId)).padding()
                     AsyncImage(url: URL(string: albumInfo.thumbnailUrl))
-                    AsyncImage(url: URL(string: albumInfo.url)).scaledToFit()
+                    AsyncImage(url: URL(string: albumInfo.url))
                 }
-                //            .frame(maxWidth: .infinity)
                 .navigationBarTitle(Text(albumInfo.title), displayMode: .inline)
                 Spacer()
             }
         }
+        .foregroundColor(Color.blue)
     }
 }
 
@@ -33,5 +33,4 @@ struct AlbumInfoDetailView_Previews: PreviewProvider {
     static var previews: some View {
         AlbumInfoDetailView(albumInfo: AlbumInfoViewModel().albumInfos.first ?? AlbumInfo.defaultAlbumInfo())
     }
-    
 }
