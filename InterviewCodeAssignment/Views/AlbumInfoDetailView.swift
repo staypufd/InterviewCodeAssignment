@@ -11,15 +11,20 @@ struct AlbumInfoDetailView: View {
     var albumInfo: AlbumInfo
 
     var body: some View {
-        ScrollView {
-            VStack {
-                Text(albumInfo.title).font(.largeTitle).padding()
-                Text(String(albumInfo.id)).padding()
-                Text(String(albumInfo.albumId)).padding()
-                AsyncImage(url: URL(string: albumInfo.thumbnailUrl))
-                AsyncImage(url: URL(string: albumInfo.url))
+        ScrollView(.vertical) {
+            ScrollView(.horizontal) {
+                VStack(alignment:.leading) {
+                    Text(albumInfo.title).font(.largeTitle).padding().lineLimit(4)
+                    Text(String(albumInfo.id)).padding()
+                    Text(String(albumInfo.albumId)).padding()
+                    AsyncImage(url: URL(string: albumInfo.thumbnailUrl))
+                    AsyncImage(url: URL(string: albumInfo.url)).scaledToFit()
+                }
+                //            .frame(maxWidth: .infinity)
+                .navigationBarTitle(Text(albumInfo.title), displayMode: .inline)
+                Spacer()
             }
-            .navigationBarTitle(Text(albumInfo.title), displayMode: .inline)
+            
         }
     }
 }
