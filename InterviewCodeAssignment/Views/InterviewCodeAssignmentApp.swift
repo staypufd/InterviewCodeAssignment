@@ -2,7 +2,7 @@
 //  InterviewCodeAssignmentApp.swift
 //  InterviewCodeAssignment
 //
-//  Created by Sam Griffith on 9/19/23.
+//  Created by Sam Griffith on 9/18/23.
 //
 
 import SwiftUI
@@ -11,7 +11,8 @@ import SwiftUI
 struct InterviewCodeAssignmentApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AlbumInfoListView()
         }
     }
 }
+
