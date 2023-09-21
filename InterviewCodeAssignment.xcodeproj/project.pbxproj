@@ -14,6 +14,8 @@
 		2213C6962ABA366D00E8ACB9 /* AlbumInfoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2213C6952ABA366D00E8ACB9 /* AlbumInfoDetailView.swift */; };
 		2213C6982ABA3C0200E8ACB9 /* AlbumInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2213C6972ABA3C0200E8ACB9 /* AlbumInfoViewModel.swift */; };
 		2227BAC52ABAD14B00A117F0 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 2227BAC42ABAD14B00A117F0 /* Preview Content */; };
+		228939382ABCC2B0008277CA /* AlbumInfoListView_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228939372ABCC2B0008277CA /* AlbumInfoListView_ViewModel.swift */; };
+		2289393A2ABCC7E9008277CA /* AlbumInfoDetailView_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228939392ABCC7E9008277CA /* AlbumInfoDetailView_ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		2213C6952ABA366D00E8ACB9 /* AlbumInfoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumInfoDetailView.swift; sourceTree = "<group>"; };
 		2213C6972ABA3C0200E8ACB9 /* AlbumInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumInfoViewModel.swift; sourceTree = "<group>"; };
 		2227BAC42ABAD14B00A117F0 /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Preview Content"; path = "InterviewCodeAssignment/Preview Content"; sourceTree = "<group>"; };
+		228939372ABCC2B0008277CA /* AlbumInfoListView_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumInfoListView_ViewModel.swift; sourceTree = "<group>"; };
+		228939392ABCC7E9008277CA /* AlbumInfoDetailView_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumInfoDetailView_ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,7 @@
 			children = (
 				2213C69D2ABA9EAF00E8ACB9 /* Views */,
 				2213C6852ABA35E200E8ACB9 /* Assets.xcassets */,
+				2213C6972ABA3C0200E8ACB9 /* AlbumInfoViewModel.swift */,
 				2213C69B2ABA9E7200E8ACB9 /* ViewModels */,
 				2213C69C2ABA9E8500E8ACB9 /* Models */,
 			);
@@ -69,7 +74,8 @@
 		2213C69B2ABA9E7200E8ACB9 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				2213C6972ABA3C0200E8ACB9 /* AlbumInfoViewModel.swift */,
+				228939372ABCC2B0008277CA /* AlbumInfoListView_ViewModel.swift */,
+				228939392ABCC7E9008277CA /* AlbumInfoDetailView_ViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -120,7 +126,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					2213C67D2ABA35E100E8ACB9 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -166,6 +172,8 @@
 				2213C6962ABA366D00E8ACB9 /* AlbumInfoDetailView.swift in Sources */,
 				2213C6982ABA3C0200E8ACB9 /* AlbumInfoViewModel.swift in Sources */,
 				2213C6822ABA35E100E8ACB9 /* InterviewCodeAssignmentApp.swift in Sources */,
+				228939382ABCC2B0008277CA /* AlbumInfoListView_ViewModel.swift in Sources */,
+				2289393A2ABCC7E9008277CA /* AlbumInfoDetailView_ViewModel.swift in Sources */,
 				2213C6942ABA365800E8ACB9 /* AlbumInfoListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -209,6 +217,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -269,6 +278,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
