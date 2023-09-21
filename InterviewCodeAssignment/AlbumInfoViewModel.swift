@@ -7,7 +7,7 @@
 
 import Foundation
 
-class AlbumInfoViewModel: ObservableObject {
+class old_AlbumInfoViewModel: ObservableObject {
     @Published var albumInfos: [AlbumInfo] = []
     @Published var isLoading: Bool = false
     

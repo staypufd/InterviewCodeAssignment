@@ -5,45 +5,59 @@
 //  Created by Sam Griffith on 9/18/23.
 //
 
+import Foundation
 import SwiftUI
+import os
 
-struct AlbumInfoDetailView: View {
-    var albumInfo: AlbumInfo
 
+struct AlbumInfoDetailView : View {
+    private let lgr = Logger()
+    let viewModel : AlbumInfoDetailView_ViewModel
+    
+    init(viewModel: AlbumInfoDetailView_ViewModel) {
+        self.viewModel = viewModel
+    }
+    
     var body: some View {
         Form {
-            Text(albumInfo.title).font(.largeTitle).padding().lineLimit(4)
-            Text(String(albumInfo.id)).padding()
-            Text(String(albumInfo.albumId)).padding()
+            Text(viewModel.albumInfo.title).font(.largeTitle).padding().lineLimit(4)
+            Text(String(viewModel.albumInfo.id)).padding()
+            Text(String(viewModel.albumInfo.albumId)).padding()
         
             ScrollView(.vertical) {
                 ScrollView(.horizontal) {
                     VStack(alignment:.leading) {
 
-                        AsyncImage(url: URL(string: albumInfo.thumbnailUrl)) { image in
+                        AsyncImage(url: URL(string: viewModel.albumInfo.thumbnailUrl)) { image in
                             image
                         } placeholder: {
                             ProgressView()
                         }
                         Spacer()
-                        AsyncImage(url: URL(string: albumInfo.url)) { image in
+                        AsyncImage(url: URL(string: viewModel.albumInfo.url)) { image in
                             image
                         } placeholder: {
                             ProgressView()
                         }
                     }
-                    .navigationBarTitle(Text(albumInfo.title), displayMode: .inline)
+                    .navigationBarTitle(Text(viewModel.albumInfo.title), displayMode: .inline)
                     Spacer()
                 }
             }
             .foregroundColor(Color.blue)
-        }.padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
+
+        }
+        .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
+
     }
 }
 
 // MARK: Previews
+
 struct AlbumInfoDetailView_Previews: PreviewProvider {
+    static let vm  = AlbumInfoDetailView.AlbumInfoDetailView_ViewModel(albumInfo: AlbumInfo.defaultAlbumInfo())
+
     static var previews: some View {
-        AlbumInfoDetailView(albumInfo: AlbumInfoViewModel().albumInfos.first ?? AlbumInfo.defaultAlbumInfo())
+        AlbumInfoDetailView(viewModel: vm)
     }
 }

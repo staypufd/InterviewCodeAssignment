@@ -7,50 +7,26 @@
 
 import SwiftUI
 
+
 // MARK: - Main Nav View
 struct AlbumInfoListView: View {
-    @ObservedObject var viewModel = AlbumInfoViewModel()
+    @StateObject var viewModel = AlbumInfoListView_ViewModel()
     
     var body: some View {
         NavigationStack {
             if viewModel.isLoading == true {
-                VStack {
-                    Spacer()
-                    
-                    if #available(iOS 17.0, *) {
-                        ProgressView().controlSize(.extraLarge)
-                    } else {
-                        ProgressView().controlSize(.large)
-                    }
-                }
+                LoadingView()
             }
             // Gives us a little space between navbar head and List table
             EmptyView()
         
             List(viewModel.albumInfos) { albumInfo in
-                NavigationLink(destination: AlbumInfoDetailView(albumInfo: albumInfo)) {
-                    VStack(alignment: .leading) {
-                        Text(albumInfo.title.capitalized)
-                            .font(.custom("Futura", size: 18, relativeTo: .title))
-                            .truncationMode(.tail)
-                            .lineLimit(1)
-                        
-                        // So we can give percentage values to the Text objects in the HStack
-                        GeometryReader { geometry in
-                            HStack {
-                                Text("Id: \(albumInfo.id)")
-                                    .frame(width: geometry.size.width * 0.20,
-                                           alignment: .leading)
-                                    .fontWeight(.thin)
-                                Text("AlbumId: \(albumInfo.albumId)")
-                                    .frame(width: geometry.size.width * 0.80,
-                                           alignment: .leading)
-                                    .fontWeight(.thin)
-                            }
-                            .padding(0) 
-                        }
-                    }
+                NavigationLink {
+                    AlbumInfoDetailView(viewModel: AlbumInfoDetailView.AlbumInfoDetailView_ViewModel(albumInfo: albumInfo))
+                } label: {
+                    listItem(albumInfo: albumInfo)
                 }
+
             }
             //          .scrollContentBackground(.hidden) // Hides the content background
             //          .background(Color.blue) // Sets the color that w.ill show when content background is hidden
@@ -60,9 +36,35 @@ struct AlbumInfoListView: View {
                 for: .navigationBar) // Sets the navigation bar background color
             .toolbarBackground(.visible, for: .navigationBar) // Make the toolbar show the background color
             .navigationBarTitleDisplayMode(.large) // When set to .inline it the space after the NavigationBar and before the list
-            .onAppear(perform: viewModel.fetchAlbumInfos)
+            .onAppear(perform:  {
+                viewModel.fetchAlbumInfos()
+            })
         }
         
+    }
+    
+    func listItem(albumInfo: AlbumInfo) -> some View {
+        VStack(alignment: .leading) {
+            Text(albumInfo.title.capitalized)
+                .font(.custom("Futura", size: 18, relativeTo: .title))
+                .truncationMode(.tail)
+                .lineLimit(1)
+            
+            // So we can give percentage values to the Text objects in the HStack
+            GeometryReader { geometry in
+                HStack {
+                    Text("Id: \(albumInfo.id)")
+                        .frame(width: geometry.size.width * 0.20,
+                               alignment: .leading)
+                        .fontWeight(.thin)
+                    Text("AlbumId: \(albumInfo.albumId)")
+                        .frame(width: geometry.size.width * 0.80,
+                               alignment: .leading)
+                        .fontWeight(.thin)
+                }
+                .padding(0)
+            }
+        }
     }
 }
 
@@ -73,3 +75,16 @@ struct AlbumInfoListView_Previews: PreviewProvider {
     }
 }
 
+
+struct LoadingView: View {
+    var body: some View {
+        VStack {
+            Spacer()
+            if #available(iOS 17.0, *) {
+                ProgressView().controlSize(.extraLarge)
+            } else {
+                ProgressView().controlSize(.large)
+            }
+        }
+    }
+}
