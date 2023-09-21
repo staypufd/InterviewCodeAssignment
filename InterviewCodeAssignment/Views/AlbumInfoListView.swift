@@ -29,6 +29,7 @@ struct AlbumInfoListView: View {
                 } label: {
                     listItem(albumInfo: albumInfo)
                 }
+
             }
             //          .scrollContentBackground(.hidden) // Hides the content background
             //          .background(Color.blue) // Sets the color that w.ill show when content background is hidden
